@@ -4,7 +4,7 @@
       width="150" />
     <h2>Buscar no Diário oficial</h2>
     <br />
-      <el-button size="large" type="info" @click="activeStep = 1" class="nova-pesquisa" >Nova Pesquisa</el-button>
+      <el-button v-if="activeStep === 3 " size="large" type="info" @click="activeStep = 1" class="nova-pesquisa" >Nova Pesquisa</el-button>
     <el-steps class="steps" finish-status="success" :active="activeStep" direction="vertical">
       <el-step title="Download dos arquivos" />
       <el-step title="Buscar termo no PDF" />
