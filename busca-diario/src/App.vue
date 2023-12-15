@@ -3,6 +3,8 @@
     <img src="https://www.guarulhos.sp.gov.br/sites/default/files/2023-02/LOGO_BRASAO_CIDADE_GRU_VERTICAL_CONTORNO-01.png"
       width="150" />
     <h2>Buscar no Diário oficial</h2>
+    <br />
+      <el-button size="large" type="info" @click="activeStep = 1" class="nova-pesquisa" >Nova Pesquisa</el-button>
     <el-steps class="steps" finish-status="success" :active="activeStep" direction="vertical">
       <el-step title="Download dos arquivos" />
       <el-step title="Buscar termo no PDF" />
@@ -44,17 +46,17 @@
           </template>
         </el-table-column>
       </el-table>
-      <br />
-      <el-button size="large" type="info" @click="activeStep = 0">Nova Pesquisa</el-button>
     </section>
     <div>
     </div>
+    <button @click="handleGoToTop" class="gotoTOp"> <el-icon><ArrowUpBold /></el-icon> </button>
   </div>
 </template>
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import axios from './services/axios';
 import WordHighlighter from "vue-word-highlighter";
+import {ArrowUpBold} from '@element-plus/icons-vue';
 
 const buscarPor = ref(true);
 
@@ -68,10 +70,9 @@ const activeStep = ref(0);
 
 const isLoading = ref(false);
 
-onMounted(async () => {
-
-});
-
+const handleGoToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 const handleDownlaod = async () => {
 
@@ -122,6 +123,20 @@ const handleSearch = async () => {
 
 </script>
 <style scoped>
+
+.gotoTOp{
+  position: fixed;
+  z-index: 999999;
+  right: 0;
+  bottom: 0;
+  margin: 14px;
+  padding: 12px;
+  cursor: pointer;
+  background: #8181814d;
+  border: none;
+  border-radius: 8px;
+}
+
 .container {
   width: 100%;
   height: 100vh;
