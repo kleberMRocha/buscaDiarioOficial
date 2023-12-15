@@ -15,8 +15,8 @@ export class Search {
       const arquivos = fs.readdirSync('./download');
 
       if (!arquivos.length) {
-        console.log(chalk.red(" 📁 A Pasta Download está vazia! "));
-        throw new Error ('📁 A Pasta Download está vazia!');
+        console.log(chalk.red('📁 A Pasta Download está vazia!'));
+        throw new Error('📁 A Pasta Download está vazia!');
       }
 
       for (const file of arquivos) {
@@ -26,7 +26,7 @@ export class Search {
         try {
           const data = await pdf(dataBuffer);
           const textoDiario = data.text;
-          
+
           const regex = new RegExp(stringPesquisa, 'gi');
 
           const ocorrencias = [];
@@ -47,8 +47,8 @@ export class Search {
 
             const URL_APP = process.env.URL_APP;
 
-            const retorno = { 
-              nomeDoArquivo: `${file} - ${data.info.Title}`, 
+            const retorno = {
+              nomeDoArquivo: `${file} - ${data.info.Title}`,
               ocorrencia: intervalo,
               url: `${URL_APP}/download/${file}`
             };

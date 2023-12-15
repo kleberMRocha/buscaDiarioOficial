@@ -1,6 +1,6 @@
 <template >
   <div class="container" v-loading="isLoading">
-    <img src="https://www.guarulhos.sp.gov.br/sites/default/files/2023-02/LOGO_BRASAO_CIDADE_GRU_VERTICAL_CONTORNO-01.png"
+    <img :src="logo"
       width="150" />
     <h2>Buscar no Diário oficial</h2>
     <br />
@@ -57,6 +57,7 @@ import { ref } from 'vue';
 import axios from './services/axios';
 import WordHighlighter from "vue-word-highlighter";
 import {ArrowUpBold} from '@element-plus/icons-vue';
+import logo from './assets/logo.png'
 
 const buscarPor = ref(true);
 
@@ -139,7 +140,7 @@ const handleSearch = async () => {
 
 .container {
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   padding: 5%;
   justify-content: flex-start;
