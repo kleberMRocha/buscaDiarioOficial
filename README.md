@@ -10,4 +10,4 @@ Posteriormente, emprega o pdf-parse para realizar buscas nos arquivos baixados.
 2. Após isso, vá para a pasta 'busca-diario'. Para iniciar o front-end, execute o comando` yarn dev`.
 3. Após a execução desses passos, a interface estará disponível em `http://localhost:SUAPORTA/`.
 
-![Tela inicial](busca-diario\src\assets\tela.png "Tela")
+![Tela inicial](https://raw.githubusercontent.com/kleberMRocha/buscaDiarioOficial/master/busca-diario/src/assets/tela.png "Tela")
