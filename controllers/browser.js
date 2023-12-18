@@ -10,6 +10,16 @@ export class Browser {
     constructor(mes = 11, ano = 2023) {
         this.mes = mes;
         this.ano = ano;
+
+
+        if (!fs.existsSync(this.destino)) {
+            fs.mkdirSync(this.destino);
+            console.log(`A pasta '${this.destino}' foi criada.`);
+        } else {
+            console.log(`A pasta '${this.destino}' já existe.`);
+        }
+
+        
     }
 
     getDonwloadPdf(url) {
