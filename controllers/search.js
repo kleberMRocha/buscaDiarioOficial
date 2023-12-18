@@ -12,17 +12,23 @@ export class Search {
   pesquisa = [];
   dataPdf = {};
   ocorrencias = [];
+  URL_APP = process.env.URL_APP;
 
   async searchInFile() {
-    try {
 
-      if (!this.arquivos.length) {
-        console.log(chalk.red('📁 A Pasta Download está vazia!'));
-        throw new Error('📁 A Pasta Download está vazia!');
-      }
+    if (!this.arquivos.length) {
+      console.log(chalk.red('📁 A Pasta Download está vazia!'));
+      throw new Error('📁 A Pasta Download está vazia!');
+    }
+
+    try {
 
       for (const file of this.arquivos) {
         await this.handleSearch(file);
+      }
+
+      if(!this.pesquisa.length){
+        console.log(chalk.red('✖ Nenhum resultado encontrado'));
       }
 
       return this.pesquisa;
@@ -39,25 +45,33 @@ export class Search {
 
   getResult(text, file, info) {
     for (const ocorrencia of this.ocorrencias) {
-      const inicioIntervalo = Math.max(0, ocorrencia - 100);
-      const fimIntervalo = Math.min(text.length, ocorrencia + this.stringPesquisa.length + 200);
 
-      const intervalo = text.slice(inicioIntervalo, fimIntervalo);
+      const intervalo = this.getInterval(text, ocorrencia);
 
       console.log(chalk.green('-----------------'));
       console.log(chalk.green(intervalo));
       console.log(chalk.green('-----------------'));
 
-      const URL_APP = process.env.URL_APP;
-
       const retorno = {
         nomeDoArquivo: `${file} - ${info.Title}`,
         ocorrencia: intervalo,
-        url: `${URL_APP}/download/${file}`
+        url: `${this.URL_APP}/download/${file}`
       };
 
       this.pesquisa.push(retorno);
     }
+  }
+
+
+  getInterval(text, ocorrencia) {
+
+    const inicioIntervalo = Math.max(0, ocorrencia - 100);
+    const fimIntervalo = Math.min(text.length, ocorrencia + this.stringPesquisa.length + 200);
+
+    const intervalo = text.slice(inicioIntervalo, fimIntervalo);
+
+    return intervalo;
+
   }
 
   async handleSearch(file,) {
