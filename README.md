@@ -4,6 +4,14 @@ Esta aplicação utiliza o Puppeteer para baixar os Diários Oficiais do site da
 
 Posteriormente, emprega o pdf-parse para realizar buscas nos arquivos baixados.
 
+#### ⚙ Funcionalidades 
+- [X] Download arquivos PDF mês / ano
+- [X] Busca do termo nos arquivos
+- [ ] Gravar os textos em banco de dados para otimizar a busca
+- [ ] Salvar os Downloads em subpastas para não precisar excluir os arquivos a cada nova requisição 
+- [ ] Implementar uma solução para converter as imagens dentro do pdf para texto   
+
+
 #### 🔥 Executando o Projeto Localmente
 
 1. Na raiz do projeto, execute o comando `yarn` e depois `yarn start`.
